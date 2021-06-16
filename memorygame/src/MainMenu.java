@@ -1,42 +1,58 @@
+import java.awt.GridLayout;
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTabbedPane;
+	 
+	public class MainMenu extends JFrame{
+		int blank;
+		public MainMenu()
+		{
+			blank=0;
+		}
 
-class MainMenu extends JFrame implements ActionListener{
+	    public static void Tabs() {
+	 
+	        // Create and set up the window.
+	        final JFrame frame = new JFrame("Calculators");
+	        // Display the window.
+	        frame.setSize(800, 500);
+	        frame.setVisible(true);
+	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	 
+	        // set grid layout for the frame
+	        frame.getContentPane().setLayout(new GridLayout(1, 1));
+	 
+	        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+	 
+	        // add tab with title
+	        tabbedPane.addTab("Simple Calculator", new JLabel("SIMPLE CALCULATOR"));
+	    
+	        // add tab with title and icon
+	        Icon icon = new ImageIcon("icon.gif");
+	        tabbedPane.addTab("Scientific Calculator", icon, new JLabel(""));
+
+	        // add tab with title, icon 
+	        tabbedPane.addTab("Graphing Calculator", icon, new JLabel(""));
+	        
+	        // add tab with title, icon 
+	        tabbedPane.addTab("Length Converter", icon, new JLabel(""));
+	        
+	        // add tab with title, icon 
+	        tabbedPane.addTab("Weight Converter", icon, new JLabel(""));
+	        
+	        // add tab with title, icon 
+	        tabbedPane.addTab("Distance Converter", icon, new JLabel(""));
 	
-	private boolean isBlue = true;
-	JButton b;
+	 
+	        frame.getContentPane().add(tabbedPane);
+	 
+	    }
+
+	    }
+	 
 	
-	public MainMenu(String n) {
-		super(n);
-		
-		b = new JButton("Simple Calculator"); //creates button
-		b.addActionListener(this);
-		Container c = getContentPane();
-		c.setLayout(new FlowLayout());
-		c.add(b);
-		
-		
-	}
-	
-	public void paint(Graphics g){
-		super.paint(g);
-		g.drawString("A MyFrame object", 500, 50); //text, x coordinate, y coordinate
-	}
-	
-	public void actionPerformed(ActionEvent evt) {
-		
-		//switching back and forth between two colours
-		 if(isBlue){
-			 getContentPane().setBackground(Color.red);
-			 isBlue = false;
-		 }
-		 else{
-			 getContentPane().setBackground(Color.blue);
-			 isBlue = true;
-		 }
-				
-		 repaint();
-	}
-	
-}
+
+
