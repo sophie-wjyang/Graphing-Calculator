@@ -1,58 +1,88 @@
-import java.awt.GridLayout;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JButton;
 import javax.swing.JTabbedPane;
-	 
-	public class MainMenu extends JFrame {
-		public MainMenu()
+import javax.swing.WindowConstants;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+
+
+
+public class MainMenuV2 extends JFrame implements ActionListener{
+	JButton simpleCalc = new JButton("Simple Calculator");
+	JButton graphingCalc = new JButton("Graphing Calculator");
+	JButton distanceConv = new JButton("Distance Converter");
+	Color pink = Color.decode("#DEA5a4");
+	Color teal = Color.decode("#265B5F");
+	Container c = getContentPane();
+	
+
+	
+	public MainMenuV2()
+	{
+		c.setBackground(pink);
+		c.add(simpleCalc);
+		c.add(graphingCalc);
+		c.add(distanceConv);
+		c.setLayout(null);
+		simpleCalc.addActionListener(this);
+		simpleCalc.setSize(260,100);
+		simpleCalc.setLocation(100,200);
+		
+		//graphingCalc.addActionListener(this);
+		graphingCalc.setSize(260,100);
+		graphingCalc.setLocation(100,310);
+		
+		distanceConv.setSize(260,100);
+		distanceConv.setLocation(100,420);
+		
+		setVisible(true);
+		setSize(510,690);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == simpleCalc)
 		{
-			SimpleCalculator one = new SimpleCalculator("");
+			new SimpleCalculator();
+			dispose();
 		}
-
-	    public static void Tabs() {
-	    	Container c = new Container();
-	        // Create and set up the window.
-	        final JFrame frame = new JFrame("Calculators");
-	        // Display the window.
-	        frame.setSize(800, 500);
-	        frame.setVisible(true);
-	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	 
-	        // set grid layout for the frame
-	        frame.getContentPane().setLayout(new GridLayout(1, 1));
-	 
-	        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-	 
-	        // add tab with title
-	        tabbedPane.addTab("Simple Calculator", new JLabel(""));
-	        
-	    
-	        // add tab with title and icon
-	        Icon icon = new ImageIcon("icon.gif");
-	        tabbedPane.addTab("Scientific Calculator", icon, new JLabel(""));
-
-	        // add tab with title, icon 
-	        tabbedPane.addTab("Graphing Calculator", icon, new JLabel(""));
-	        
-	        // add tab with title, icon 
-	        tabbedPane.addTab("Length Converter", icon, new JLabel(""));
-	        
-	        // add tab with title, icon 
-	        tabbedPane.addTab("Weight Converter", icon, new JLabel(""));
-	        
-	        // add tab with title, icon 
-	        tabbedPane.addTab("Distance Converter", icon, new JLabel(""));
+	}
 	
-	 
-	        frame.getContentPane().add(tabbedPane);
-	 
-	    }
-
-	    }
-	 
+	public void paint(Graphics g)
+	{
+		super.paint(g);
+		g.setColor(teal);
+		g.setFont(new Font("TimesRoman", Font.BOLD, 30));
+		g.drawString("			Welcome to Sophie and Rana's ", 50, 60);
+		g.drawString("					ULTIMATE calculator ", 98, 100);
+		g.drawString("					Take your pick! ", 120, 190);
+		
+	}
+		
 	
+	
+	
+	
+	
+	}
+		
+
+
+
+
+
+
+
 
 
