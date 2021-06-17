@@ -6,15 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 	 
-	public class MainMenu extends JFrame{
-		int blank;
+	public class MainMenu extends JFrame {
 		public MainMenu()
 		{
-			blank=0;
+			SimpleCalculator one = new SimpleCalculator("");
 		}
 
 	    public static void Tabs() {
-	 
+	    	Container c = new Container();
 	        // Create and set up the window.
 	        final JFrame frame = new JFrame("Calculators");
 	        // Display the window.
@@ -28,7 +27,8 @@ import javax.swing.JTabbedPane;
 	        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 	 
 	        // add tab with title
-	        tabbedPane.addTab("Simple Calculator", new JLabel("SIMPLE CALCULATOR"));
+	        tabbedPane.addTab("Simple Calculator", new JLabel(""));
+	        
 	    
 	        // add tab with title and icon
 	        Icon icon = new ImageIcon("icon.gif");
