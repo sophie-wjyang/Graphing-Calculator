@@ -2,6 +2,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import jdk.javadoc.internal.tool.Main;
+
+import java.awt.Color;
+
 class SimpleCalculator extends JFrame implements ActionListener{
 	
 	//creating display
@@ -47,6 +51,9 @@ class SimpleCalculator extends JFrame implements ActionListener{
     JButton divideButton = new JButton("/");
     JButton calculateButton = new JButton("=");
     JButton clearButton = new JButton("Clear");
+    JButton menuButton = new JButton("Menu");
+    Color red = Color.decode("#f09d97");
+    Color white = Color.decode("#FFFFFF");
 	 
 	 
 	public SimpleCalculator(String n) {
@@ -57,6 +64,12 @@ class SimpleCalculator extends JFrame implements ActionListener{
         //getContentPane().setBackground(Color.gray);
         c.setLayout(null);
 		
+        c.add(menuButton);
+        menuButton.setBackground(red);
+        menuButton.setSize(70,40);
+        menuButton.setLocation(390,10);
+        menuButton.addActionListener(this);
+        
 		//output value
       	c.add(output);
       	output.setSize(410,60);
@@ -273,6 +286,16 @@ class SimpleCalculator extends JFrame implements ActionListener{
 			{
 				output.setText(equation);
 			}
+			else if (e.getSource() == menuButton)
+			{
+				MainMenu get = new MainMenu();
+				dispose();
+				
+			}
+	}
+	
+	
+		
 			
 		//}
 	
@@ -280,4 +303,3 @@ class SimpleCalculator extends JFrame implements ActionListener{
 	}
 	
 	
-}
