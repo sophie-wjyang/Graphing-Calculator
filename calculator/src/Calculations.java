@@ -1,8 +1,9 @@
-public class CalcTest {
+
+public class Calculations {
 
 	public static void main(String[] args) {
 		//declaring variables and arrays
-		String equation = "62/3";
+		String equation = "4+61+5-6/2*4";
 		String temp = "";
 		char [] equationArray = equation.toCharArray(); //convert equation to an array of characters
 		String [] numbersArray = new String [equation.length()];
@@ -73,7 +74,7 @@ public class CalcTest {
 		
 		
 		
-	
+		
 		//multiplication and division
 		for(int i = 0; i < count-1; i++) {
 			if(operationsArray [i].equals("*")) {
@@ -158,7 +159,7 @@ public class CalcTest {
 				result += newNumbersArray[i+1];
 			}
 			else if(newOperationsArray[i].equals("-")){
-				result += - newNumbersArray[i+1];
+				result -= newNumbersArray[i+1];
 			}
 		}
 		
