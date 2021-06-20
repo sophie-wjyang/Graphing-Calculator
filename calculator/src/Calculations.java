@@ -73,7 +73,7 @@ public class CalcTest {
 		
 		
 		
-		
+	
 		//multiplication and division
 		for(int i = 0; i < count-1; i++) {
 			if(operationsArray [i].equals("*")) {
@@ -81,9 +81,8 @@ public class CalcTest {
 				numbersArray [i] = null;
 				operationsArray [i] = null;
 			}
-		}
-		for(int i = 0; i < count-1; i++) {
-			if(operationsArray [i].equals("/")) {
+		
+			else if(operationsArray [i].equals("/")) {
 				numbersArray [i+1] = Integer.toString(Integer.parseInt(numbersArray [i])/Integer.parseInt(numbersArray [i+1]));
 				numbersArray [i] = null;
 				operationsArray [i] = null;
