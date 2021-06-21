@@ -1,9 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
-import jdk.javadoc.internal.tool.Main;
-
 import java.awt.Color;
 
 class SimpleCalculator extends JFrame implements ActionListener{
