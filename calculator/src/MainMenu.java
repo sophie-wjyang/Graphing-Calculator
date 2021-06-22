@@ -13,15 +13,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-
-
 public class MainMenu extends JFrame implements ActionListener{
 
-		
+	//main method calls on the MainMenu class
 	public static void main(String[] args)
 	{
 		new MainMenu ("Main Menu");
 	}
+	
 	//buttons setup for main menu 
 	JButton simpleCalc = new JButton("Simple Calculator");
 	JButton linGraphs = new JButton("Linear Graphing Calculator");
@@ -35,16 +34,17 @@ public class MainMenu extends JFrame implements ActionListener{
 	Container c = getContentPane();
 		
 	/*
-    MainMenu()
-    Function: Constructor--sets up the layout of the main menu and its frame. Sets up action listener on buttons
+    MainMenu() is the constructor; sets up the layout of the main menu and its frame; sets up action listener on buttons
     Pre: String n must be passed. String n represents the name of the window "Main Menu"
     Post: Outputs the display of the calculator, allows buttons to be clickable 
     */
+	
 	public MainMenu(String n)
 	{
 		super(n);
 		c.setBackground(teal);
 		c.setLayout(null);
+		
 		//background of buttons
 		simpleCalc.setBackground(pink);
 		simpleCalc.setOpaque(true);
@@ -68,7 +68,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		linGraphs.addActionListener(this);
 		
 		quadGraphs.setSize(260,70);
-		quadGraphs.setLocation(120,350);
+		quadGraphs.setLocation(120,330);
 		quadGraphs.addActionListener(this);
 
 		//setting up the frame 
@@ -76,11 +76,13 @@ public class MainMenu extends JFrame implements ActionListener{
 		repaint();
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
 	}
 
-	
+	/*
+	actionPerformed() is used to define what happens when the user clicks on a given button
+	Pre: ActionEvent must be passed as a result of a button being pressed
+	Post: allows the buttons to load classes
+	*/
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == simpleCalc)
 		{
@@ -105,6 +107,11 @@ public class MainMenu extends JFrame implements ActionListener{
 		}
 	}
 	
+	/*
+    paint() is an overriden method to display graphics
+    Pre: Graphics object g must be passed from overriden paint method
+    Post: Prints out welcome message
+    */
 	public void paint(Graphics g)
 	{
 		super.paint(g);
@@ -112,17 +119,36 @@ public class MainMenu extends JFrame implements ActionListener{
 		g.setFont(new Font("Courier", Font.BOLD, 20));
 		g.drawString("Welcome to Sophie and Rana's ", 90, 80);
 		g.drawString("calculator", 190, 100);
-		g.drawString("					Take your pick! ", 160, 190);
-		
+		g.drawString("Take your pick!", 160, 190);
 	}
+}
 		
-	
-	
-	
-	
-	
-	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		
+
+
+
+
+
+
+
 
 
 
