@@ -1,13 +1,17 @@
+/*
+Due date: June 23, 2021
+Authors: Rana B. and Sophie Y.
+File description: a simple calculator that can solve equations using the four operations (+,-,*,/); accepts decimal and negative input
+*/
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.awt.Color;
 
-class SimpleCalculator extends JFrame implements ActionListener{
+public class SimpleCalculator extends JFrame implements ActionListener{
 	
-	//creating display
+	//creating calculator display
 	private JTextField output = new JTextField(20);
-	String equation = "";
 	
 	//creating panels
 	JPanel panel1 = new JPanel();
@@ -48,32 +52,43 @@ class SimpleCalculator extends JFrame implements ActionListener{
     JButton divideButton = new JButton("/");
     JButton calculateButton = new JButton("=");
     JButton clearButton = new JButton("Clear");
+    
+    //main menu button
     JButton menuButton = new JButton("Menu");
     Color red = Color.decode("#f09d97");
     Color white = Color.decode("#FFFFFF");
-	 
-	 
+    
+    //calculations variables
+	String equation = "";
+    double result = 0;
+
+	/*
+	SimpleCalculator() is the constructor, and is used to create containers and buttons
+	Pre: String n must be passed. String n represents the name of the window "Graphing Calculator"
+	Post: Creates container and buttons
+	*/
+
 	public SimpleCalculator(String n) {
 		super(n);
 		
 		//creating container
         Container c = getContentPane();
-        //getContentPane().setBackground(Color.gray);
         c.setLayout(null);
-		
+        
+        //main menu button
         c.add(menuButton);
         menuButton.setBackground(red);
         menuButton.setSize(70,40);
         menuButton.setLocation(390,10);
         menuButton.addActionListener(this);
-        
+		
 		//output value
       	c.add(output);
       	output.setSize(410,60);
         output.setLocation(50,50);
-      	output.setEditable(false); //doesn't let user input in output field
-		
+      	output.setEditable(false); 
        
+	   	//number and operator buttons
         c.add(oneButton);
         oneButton.addActionListener(this);
         this.add(panel1);
@@ -178,125 +193,242 @@ class SimpleCalculator extends JFrame implements ActionListener{
         
         c.add(calculateButton);
         calculateButton.addActionListener(this);
-        output.setText(equation);
         this.add(panelCalculate);
         calculateButton.setSize(190,50);
         calculateButton.setLocation(50,580);
-        output.setText(equation);
-        
-     
-      	    
 	}
 	
-	public void actionPerformed(ActionEvent e) {
+	/*
+	Calculations() is used to 
+	Pre: the String equation must not be empty
+	Post: outputs the answer to the inputted equation
+	*/
+
+	public void calculations() {
 		
+		String temp = ""; //used to separate equationArray into an array of numbers and an array of operators
+		char [] equationArray = equation.toCharArray(); //convert equation to an array of characters
 		
+		String [] numbersArray = new String [equation.length()]; 
+		String [] operationsArray = new String [equation.length()];
+		int j = 0, k = 0;
 		
-		//recognizing which button was clicked, displaying it, and adding it to a string
-		//while(e.getSource() != calculateButton) {
-			if (e.getSource() == oneButton)
-			{
-				equation += "1";
-				output.setText(equation);
-			}
-			else if (e.getSource() == twoButton)
-			{
-				equation += "2";
-				output.setText(equation);
-			}
-			else if (e.getSource() == threeButton)
-			{
-				equation += "3";
-				output.setText(equation);
-			}
-			else if (e.getSource() == fourButton)
-			{
-				equation += "4";
-				output.setText(equation);
-			}
-			else if (e.getSource() == fiveButton)
-			{
-				equation += "5";
-				output.setText(equation);
-			}
-			else if (e.getSource() == sixButton)
-			{
-				equation += "6";
-				output.setText(equation);
-			}
-			else if (e.getSource() == sevenButton)
-			{
-				equation += "7";
-				output.setText(equation);
-			}
-			else if (e.getSource() == eightButton)
-			{
-				equation += "8";
-				output.setText(equation);
-			}
-			else if (e.getSource() == nineButton)
-			{
-				equation += "9";
-				output.setText(equation);
-			}
-			else if (e.getSource() == zeroButton)
-			{
-				equation += "0";
-				output.setText(equation);
-			}
-			else if (e.getSource() == addButton)
-			{
-				equation += "+";
-				output.setText(equation);
-			}
-			else if (e.getSource() == subtractButton)
-			{
-				equation += "-";
-				output.setText(equation);
-			}
-			else if (e.getSource() == multiplyButton)
-			{
-				equation += "*";
-				output.setText(equation);
-			}
-			else if (e.getSource() == divideButton)
-			{
-				equation += "/";
-				output.setText(equation);
-			}
-			else if (e.getSource() == decimalButton)
-			{
-				equation += ".";
-				output.setText(equation);
-			}
-			else if (e.getSource() == negativeButton)
-			{
-				equation += "_"; //underscore
-				output.setText(equation);
-			}
-			else if (e.getSource() == clearButton)
-			{
+		int count = 0, count2 = 0; //used to determine the length of various arrays
+		
+		//ERROR MESSAGES 
+		//equation starts with an operator
+		if(equationArray[0] == '+' || equationArray[0] == '-' || equationArray[0] == '*' || equationArray[0] == '/') {
+			output.setText("Error");
+			equation = "";
+		}
+
+		//multiple operators in a row
+		for(int i = 0; i < equationArray.length-1; i++) {
+			if((equationArray[i] == '+' || equationArray[i] == '-' || equationArray[i] == '*' || equationArray[i] == '/') && (equationArray[i+1] == '+' || equationArray[i+1] == '-' || equationArray[i+1] == '*' || equationArray[i+1] == '/')) {
+				output.setText("Error");
 				equation = "";
-				output.setText("");
 			}
-			else if (e.getSource() == calculateButton)
-			{
-				output.setText(equation);
-			}
-			else if (e.getSource() == menuButton)
-			{
-				MainMenu get = new MainMenu();
-				dispose();
-				
-			}
-	}
-	
-	
+		}
 		
+		//multiple decimal points in a row
+		for(int i = 0; i < equationArray.length-1; i++) {
+			if(equationArray[i] == '.' && equationArray[i+1] == '.') {
+				output.setText("Error");
+				equation = "";
+			}
+		}
 			
-		//}
-	
+		//STEP 1: SEPARATING equationArray INTO TWO ARRAYS: AN ARRAY OF NUMBERS AND AN ARRAY OF OPERATORS
+		for(int i = 0; i < equation.length(); i++) {
+			if(equationArray[i] != '+' && equationArray[i] != '-' && equationArray[i] != '*' && equationArray[i] != '/') {
+				temp += equationArray[i];
+				numbersArray [j] = temp;
+			}
+			else {
+				j++;
+				temp = "";
+				operationsArray [k] = Character.toString(equationArray[i]);
+				
+				k++;
+			}
+		}
+
+		//counting the non-null strings in numbersArray
+		for(int i = 0; i < equation.length(); i++) {
+			if(numbersArray[i] != null) {
+				count++;
+			}
+		}
 		
+		//allowing negative input
+		for(int i = 0;  i < count; i++) {
+			if(numbersArray[i].charAt(0) == '_') {
+				numbersArray[i] = String.valueOf(Double.parseDouble(numbersArray[i].substring(1, numbersArray[i].length())) * (-1));
+			}
+		}
+		
+		//STEP 2: FOLLOWING BEDMAS, CALCULATE * AND / FIRST, STORING THE RESULTS AND REMAINING NUMBERS INTO NEW ARRAYS
+		//declaring new arrays
+		double [] newNumbersArray = new double [count];
+		String [] newOperationsArray = new String [count];
+		int m = 0, n = 0;
+		
+		//multiplication and division
+		for(int i = 0; i < count-1; i++) {
+			if(operationsArray [i].equals("*")) {
+				numbersArray [i+1] = Double.toString(Double.parseDouble(numbersArray [i])*Double.parseDouble(numbersArray [i+1]));
+				numbersArray [i] = null;
+				operationsArray [i] = null;
+			}
+		
+			else if(operationsArray [i].equals("/")) {
+				numbersArray [i+1] = Double.toString(Double.parseDouble(numbersArray [i])/Double.parseDouble(numbersArray [i+1]));
+				numbersArray [i] = null;
+				operationsArray [i] = null;
+			}
+		}
+		
+		//getting rid of null values in numbersArray  
+		for(int i = 0; i < count; i++) {
+			if(numbersArray [i] != null){
+				newNumbersArray [m] = Double.parseDouble(numbersArray[i]);
+				m++;
+			}
+		}
+		 
+		//getting rid of null values in operationsArray
+		for(int i = 0; i < count-1; i++) {
+			if(operationsArray [i] != null){
+				newOperationsArray [n] = operationsArray[i];
+				n++;
+			}
+		}
+		
+		//counting the non-null strings in newNumbersArray
+		for(int i = 0; i < count; i++) {
+			if(newNumbersArray[i] != 0) {
+				count2++;
+			}
+		}
+		
+		//STEP 3: ADD AND SUBTRACT THE REMAINING NUMBERS
+		//add and subtract
+		result = newNumbersArray[0];
+		
+		for(int i = 0; i < count2-1; i++) {
+			if(newOperationsArray[i].equals("+")){
+				result += newNumbersArray[i+1];
+			}
+			else if(newOperationsArray[i].equals("-")){
+				result -= newNumbersArray[i+1];
+			}
+		}		
 	}
-	
-	
+
+	/*
+	actionPerformed() is used to define what happens when the user clicks on a given button
+	Pre: ActionEvent must be passed as a result of a button being pressed
+	Post: the String equation and the display is changed
+	*/
+
+	public void actionPerformed(ActionEvent e) {
+		//recognizing which button was clicked, displaying its value, and adding it to a string (which is used in calculations() to actually solve the equation)
+		if (e.getSource() == oneButton)
+		{
+			equation += "1";
+			output.setText(equation);
+		}
+		else if (e.getSource() == twoButton)
+		{
+			equation += "2";
+			output.setText(equation);
+		}
+		else if (e.getSource() == threeButton)
+		{
+			equation += "3";
+			output.setText(equation);
+		}
+		else if (e.getSource() == fourButton)
+		{
+			equation += "4";
+			output.setText(equation);
+		}
+		else if (e.getSource() == fiveButton)
+		{
+			equation += "5";
+			output.setText(equation);
+		}
+		else if (e.getSource() == sixButton)
+		{
+			equation += "6";
+			output.setText(equation);
+		}
+		else if (e.getSource() == sevenButton)
+		{
+			equation += "7";
+			output.setText(equation);
+		}
+		else if (e.getSource() == eightButton)
+		{
+			equation += "8";
+			output.setText(equation);
+		}
+		else if (e.getSource() == nineButton)
+		{
+			equation += "9";
+			output.setText(equation);
+		}
+		else if (e.getSource() == zeroButton)
+		{
+			equation += "0";
+			output.setText(equation);
+		}
+		else if (e.getSource() == addButton)
+		{
+			equation += "+";
+			output.setText(equation);
+		}
+		else if (e.getSource() == subtractButton)
+		{
+			equation += "-";
+			output.setText(equation);
+		}
+		else if (e.getSource() == multiplyButton)
+		{
+			equation += "*";
+			output.setText(equation);
+		}
+		else if (e.getSource() == divideButton)
+		{
+			equation += "/";
+			output.setText(equation);
+		}
+		else if (e.getSource() == decimalButton)
+		{
+			equation += ".";
+			output.setText(equation);
+		}
+		else if (e.getSource() == negativeButton)
+		{
+			equation += "(_)"; //note: underscore instead of negative sign
+			output.setText(equation);
+		}
+		else if (e.getSource() == clearButton)
+		{
+			equation = "";
+			output.setText("");
+		}
+		else if (e.getSource() == calculateButton)
+		{
+			calculations();
+			output.setText(String.valueOf(result)); 
+			equation = "";
+		}
+		else if (e.getSource() == menuButton)
+		{
+			new MainMenu();
+			dispose();
+			
+		} 
+	}
+}

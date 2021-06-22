@@ -1,9 +1,17 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JTabbedPane;
+import javax.swing.WindowConstants;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 
@@ -53,6 +61,7 @@ public class MainMenu extends JFrame implements ActionListener{
 	
 		graphingCalc.setSize(260,70);
 		graphingCalc.setLocation(120,270);
+		graphingCalc.addActionListener(this);
 		
 		distanceConv.setSize(260,70);
 		distanceConv.setLocation(120,350);
@@ -86,6 +95,13 @@ public class MainMenu extends JFrame implements ActionListener{
 			SimpleCalculator one = new SimpleCalculator("Simple Calculator");
 			one.setSize(510,690);
 			one.setVisible(true);
+			dispose();
+		}
+		else if (e.getSource() == graphingCalc)
+		{
+			GraphingCalculator two = new GraphingCalculator("Graphing Calculator");
+			two.setSize(510,690);
+			two.setVisible(true);
 			dispose();
 		}
 	}
