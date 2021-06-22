@@ -77,14 +77,14 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         //main menu button
         c.add(menuButton);
         menuButton.setBackground(red);
-        menuButton.setFont(new Font("Arial", Font.PLAIN, 18));
+        menuButton.setFont(new Font("Times New Roman", Font.PLAIN, 18));
         menuButton.setSize(70,40);
         menuButton.setLocation(390,10);
         menuButton.addActionListener(this);
 		
 		//output value
       	c.add(output);
-      	output.setFont(new Font("Arial", Font.PLAIN, 20));
+      	output.setFont(new Font("Times New Roman", Font.PLAIN, 20));
       	output.setSize(410,60);
         output.setLocation(50,50);
       	output.setEditable(false); 
@@ -93,126 +93,126 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(oneButton);
         oneButton.addActionListener(this);
         this.add(panel1);
-        oneButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        oneButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         oneButton.setSize(80,80);
         oneButton.setLocation(50,140);
        
         c.add(twoButton);
         twoButton.addActionListener(this);
         this.add(panel2);
-        twoButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        twoButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         twoButton.setSize(80,80);
         twoButton.setLocation(160,140);
         
         c.add(threeButton);
         threeButton.addActionListener(this);
         this.add(panel3);
-        threeButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        threeButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         threeButton.setSize(80,80);
         threeButton.setLocation(270,140);
         
         c.add(addButton);
         addButton.addActionListener(this);
         this.add(panelAdd);
-        addButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        addButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         addButton.setSize(80,80);
         addButton.setLocation(380,140);
        
         c.add(fourButton);
         fourButton.addActionListener(this);
         this.add(panel4);
-        fourButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        fourButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         fourButton.setSize(80,80);
         fourButton.setLocation(50,250);
         
         c.add(fiveButton);
         fiveButton.addActionListener(this);
         this.add(panel5);
-        fiveButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        fiveButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         fiveButton.setSize(80,80);
         fiveButton.setLocation(160,250);
         
         c.add(sixButton);
         sixButton.addActionListener(this);
         this.add(panel6);
-        sixButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        sixButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         sixButton.setSize(80,80);
         sixButton.setLocation(270,250);
         
         c.add(subtractButton);
         subtractButton.addActionListener(this);
         this.add(panelSubtract);
-        subtractButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        subtractButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         subtractButton.setSize(80,80);
         subtractButton.setLocation(380,250);
         
         c.add(sevenButton);
         sevenButton.addActionListener(this);
         this.add(panel7);
-        sevenButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        sevenButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         sevenButton.setSize(80,80);
         sevenButton.setLocation(50,360);
         
         c.add(eightButton);
         eightButton.addActionListener(this);
         this.add(panel8);
-        eightButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        eightButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         eightButton.setSize(80,80);
         eightButton.setLocation(160,360);
         
         c.add(nineButton);
         nineButton.addActionListener(this);
         this.add(panel9);
-        nineButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        nineButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         nineButton.setSize(80,80);
         nineButton.setLocation(270,360);
         
         c.add(multiplyButton);
         multiplyButton.addActionListener(this);
         this.add(panelMultiply);
-        multiplyButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        multiplyButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         multiplyButton.setSize(80,80);
         multiplyButton.setLocation(380,360);
         
         c.add(zeroButton);
         zeroButton.addActionListener(this);
         this.add(panel0);
-        zeroButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        zeroButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         zeroButton.setSize(80,80);
         zeroButton.setLocation(50,470);
         
         c.add(decimalButton);
         decimalButton.addActionListener(this);
         this.add(panelDecimal);
-        decimalButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        decimalButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         decimalButton.setSize(80,80);
         decimalButton.setLocation(160,470);
         
         c.add(negativeButton);
         negativeButton.addActionListener(this);
         this.add(panelNegative);
-        negativeButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        negativeButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         negativeButton.setSize(80,80);
         negativeButton.setLocation(270,470);
         
         c.add(divideButton);
         divideButton.addActionListener(this);
         this.add(panelDivide);
-        divideButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        divideButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         divideButton.setSize(80,80);
         divideButton.setLocation(380,470);
         
         c.add(clearButton);
         clearButton.addActionListener(this);
         this.add(panelClear);
-        clearButton.setFont(new Font("Arial", Font.PLAIN, 25));
+        clearButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         clearButton.setSize(190,50);
         clearButton.setLocation(270,580);
         
         c.add(calculateButton);
         calculateButton.addActionListener(this);
         this.add(panelCalculate);
-        calculateButton.setFont(new Font("Arial", Font.PLAIN, 30));
+        calculateButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         calculateButton.setSize(190,50);
         calculateButton.setLocation(50,580);
 	}
