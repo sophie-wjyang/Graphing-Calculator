@@ -12,6 +12,10 @@ import javax.swing.*;
 import java.awt.geom.*;
 
 public class GraphingCalculatorLinear extends JFrame implements ActionListener{
+	//Constants used in the program
+	private static final int XORIGIN = 254; 
+	private static final int YORIGIN = 384; 
+	
 	//setting up colours using hex codes
 	Color grey = Color.decode("#ebf0f7");
 	Color grey2 = Color.decode("#dce1e8");
@@ -32,29 +36,76 @@ public class GraphingCalculatorLinear extends JFrame implements ActionListener{
 	double yInt, ySlope;
 	protected Graphics2D g3;
 	String userIn1, userIn2; //used to check valid input
+	int xp, yp;
 	boolean pressGraph = false; //control variable for paint
+	boolean error = false;
 
 	/*
     GraphingCalculatorLinear() is the constructor; sets up the layout and size of the graphing calculator and its frame; sets up action listener on buttons
     Pre: String n must be passed. String n represents the name of the window "Graphing Calculator"
     Post: Outputs the display of the calculator, allows buttons to be clickable 
     */
+	public GraphingCalculatorLinear(String n)
+	{
+		super(n);
+		Container c = getContentPane();
+		
+		c.setLayout(null);
+		yIntcpt.setBounds(70, 30, 40, 30);
+		yIntcpt.setLocation(40, 50);
+		c.add(yIntcpt);
+		
+		slope.setBounds(70, 30, 40, 30);
+		slope.setLocation(95, 50);
+		c.add(slope);
+		
+		eqtn.setBounds(180,30, 200,30);
+		eqtn.setLocation(150,50);
+		eqtn.setEditable(false);
+		c.add(eqtn);
+		
+		graph.setSize(89,25);
+		graph.setLocation(370,42);
+		graph.addActionListener(this);
+		c.add(graph);
+		
+		clear.setSize(89,25);
+		clear.setLocation(370,70);
+		clear.addActionListener(this);
+		c.add(clear);
+		
+		menu.setBackground(red);
+        menu.setSize(70,30);
+        menu.setLocation(216,610);
+        menu.addActionListener(this);
+        c.add(menu);
+		
+		setSize(510,690);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
 
 	public void LinearGraph(Graphics g) {
 		
-	double y;
+	double y;														//y coordinate of the equation
+	int offset = 2;                                                 //offset value of the oval
+	int paddingV = 7;                                               //7 pixels represent one unit on our grid
+	int topBound = 141;                                             //top bound of grid in java coordinate
+	int bottomBound = 630;                                          //bottom bound of grid in java coordinate
+	int rightBound = 42;                                            //right bound of grid in java coordinate
+	int leftBound = 462;                                            //left bound of grid in java coordinate
 	
 	for (double x=-30; x<=30; x = x+0.01)
        {
 		g.setColor(Color.RED);
         y = ySlope*x + yInt;
          
-        xp = (int)Math.round(254 + x*7);
-    	yp = (int)Math.round(384 - y*7);
+        xp = (int)Math.round(XORIGIN+ x*paddingV);
+    	yp = (int)Math.round(YORIGIN - y*paddingV);
          
-        if (yp >= 141 && yp<=630 && xp>=42 && xp<=462)
+        if (yp >= topBound && yp<=bottomBound && xp>=rightBound && xp<=leftBound)
 	    {
-	    	g.fillOval(xp-2,yp-2,2,2);
+	    	g.fillOval(xp-offset,yp-offset,2,2);
 	    }
        }
 	}
@@ -124,7 +175,7 @@ public class GraphingCalculatorLinear extends JFrame implements ActionListener{
 		}
 	}
 	
-	 /*
+	/*
     main() is the main method
     Pre: none
     Post: instantiates an object of the GraphingCalculatorLinear class
@@ -193,14 +244,8 @@ public class GraphingCalculatorLinear extends JFrame implements ActionListener{
 		//goes back to main menu 
 		else if(e.getSource() == menu)
 		{
-			MainMenu get = new MainMenu();
+			MainMenu get = new MainMenu("Main Menu");
 			dispose();
 		}
 	}
 }
-	
-	
-	
-	
-	
-	
