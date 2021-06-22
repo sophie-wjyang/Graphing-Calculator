@@ -5,11 +5,10 @@ File description: A graphing calculator class that graphs linear equations in th
 */
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.*;
 import java.awt.geom.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GraphingCalculatorLinear extends JFrame implements ActionListener{
 	//Constants used in the program
@@ -244,7 +243,7 @@ public class GraphingCalculatorLinear extends JFrame implements ActionListener{
 		//goes back to main menu 
 		else if(e.getSource() == menu)
 		{
-			MainMenu get = new MainMenu("Main Menu");
+			new MainMenu("Main Menu");
 			dispose();
 		}
 	}

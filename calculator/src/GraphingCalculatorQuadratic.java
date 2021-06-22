@@ -1,3 +1,4 @@
+
 /*
 Due date: June 23, 2021
 Authors: Rana B. and Sophie Y.
@@ -5,17 +6,15 @@ File description: A graphing calculator class that draws quadratic equations the
 */
 
 import java.awt.*;
+import javax.swing.*;
+import java.awt.geom.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import java.awt.geom.*;
-
-
 public class GraphingCalculatorQuadratic extends JFrame implements ActionListener{
     //Constants used in the program
-    private static final int XORIGIN = 254; 
-    private static final int YORIGIN = 384; 
+    private final int XORIGIN = 254; 
+    private final int YORIGIN = 384; 
 
     //Colors used in the program
 	Color grey = Color.decode("#ebf0f7");
@@ -44,8 +43,7 @@ public class GraphingCalculatorQuadratic extends JFrame implements ActionListene
 	boolean error = false;
 
 	/*
-    GraphingCaclulatorQuadratic()
-    Function: Constructor--sets up the layout of the graphing calculator and its frame. Sets up action listener on buttons
+    GraphingCalculatorQuadratic() is the constructor, and sets up the layout of the graphing calculator and its frame; sets up action listener on buttons
     Pre: String n must be passed. String n represents the name of the window "Graphing Calculator"
     Post: Outputs the display of the calculator, allows buttons to be clickable 
     */
@@ -53,6 +51,7 @@ public class GraphingCalculatorQuadratic extends JFrame implements ActionListene
 	{
 		super(n);
 		Container c = getContentPane();
+		
         //Location of textfield to hold a Value
 		c.setLayout(null);
 		aValue.setBounds(55, 10, 30, 25);
@@ -98,19 +97,16 @@ public class GraphingCalculatorQuadratic extends JFrame implements ActionListene
 		setSize(510,690);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		
 	}
 	
     /*
-    Name: findPoints()
-    Function: Finds all the x and y coordinates needed to print the shape of the graph. Paint calls on this method to paint the 
-    parabola on the screen
+    findPoints() finds all the x and y coordinates needed to print the shape of the graph. Paint calls on this method to paint the parabola on the screen
     Pre: Graphics object g must be passed from overriden paint method
-    Post: Prints out final graph's coordinates onto the screen
+    Post: prints out a series of circles, that join together to display the given quadration function
     */
 	public void findPoints(Graphics g)
 	{
-		
+		//declaring variables for boundaries
 		double y;                                                       //finds y values for the equation
         int offset = 2;                                                 //offset value of the oval
         int paddingV = 7;                                               //7 pixels represent one unit on our grid
@@ -121,39 +117,41 @@ public class GraphingCalculatorQuadratic extends JFrame implements ActionListene
         
 		g.setColor(Color.RED);                                          //sets color of points to be red 
 
-		for (double x=-50; x<=50; x = x+0.01)                           //all x-coordinates to be used to plot the points
-	       {
-	         y = aNum*x*x+bNum*x+cNum;                                  //calculates y value using the equation
-	        xPoint = (int)Math.round(XORIGIN + x*paddingV);             //converts x coordinates to java coordinate 
-	        yPoint = (int)Math.round(YORIGIN - y*paddingV);             //converts y coordinates to java coordinate 
+		for (double x=-50; x<=50; x = x+0.0001)                          //all x-coordinates to be used to plot the points
+	    {
+	       y = aNum*x*x+bNum*x+cNum;                                  //calculates y value using the equation
+	       xPoint = (int)Math.round(XORIGIN + x*paddingV);             //converts x coordinates to java coordinate 
+	       yPoint = (int)Math.round(YORIGIN - y*paddingV);             //converts y coordinates to java coordinate 
 	         
-	         if (yPoint >= topBound && yPoint<=bottomBound && xPoint>=rightBound && xPoint<=leftBound)
-		     {
-		        g.fillOval(xPoint-offset,yPoint-offset,2,2);            //prints coordinates if they lie within bounds
-		     }
-	         
-	       }     
-	        
-
+	       if (yPoint >= topBound && yPoint<=bottomBound && xPoint>=rightBound && xPoint<=leftBound)
+		   {
+	    	   g.fillOval(xPoint-offset,yPoint-offset,2,2);            //prints coordinates if they lie within bounds
+		   }  
+	    }     
 	}
 
+    /*
+    grid() displays grid after paint calls on grid()
+    Pre: Graphics object g must be passed from overriden paint method
+    Post: Prints out grid onto frame  
+    */
     public void grid(Graphics g)
     {
         //setting up the grid
         int distanceBtwnBox = 35;
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.setColor(grey);
         //outline of grid box
+        g2.setColor(grey);
 		g2.fillRect(45, 140, 420, 490);
 		
-        g2.setColor(grey2);
 		//drawing vertical lines for grid
+        g2.setColor(grey2);
 		for (int i = -distanceBtwnBox; i<400; i+=distanceBtwnBox)
 		{
 			g2.draw(new Line2D.Double(80+i, 140, 80+i, 630));
-
 		}
+		
 		//drawing horizontal lines for grid
 		for(int j = -distanceBtwnBox; j<470; j+=distanceBtwnBox)
 		{
@@ -167,16 +165,17 @@ public class GraphingCalculatorQuadratic extends JFrame implements ActionListene
 		//x axis line
 		g2.draw(new Line2D.Double(44,384,465,384));
     }
+    
     /*
-    Name: paint()
-    Function: Overriden method to display graphics
+    paint() overriden method to display graphics
     Pre: Graphics object g must be passed from overriden paint method
     Post: Prints out error messages, grid, and graph 
     */
 	public void paint(Graphics g)
 	{
 		super.paint(g);
-        //draws grid
+       
+		//draws grid
 		grid(g);
 
         //Prompts for user input
@@ -187,7 +186,6 @@ public class GraphingCalculatorQuadratic extends JFrame implements ActionListene
 		g.drawString("b", 90, 95);
 		g.drawString("c", 130, 95);
 		g.drawString("Equation in standard form:", 170, 95);
-		
 		
 		g.setColor(Color.RED);
 		
@@ -200,12 +198,12 @@ public class GraphingCalculatorQuadratic extends JFrame implements ActionListene
 			error = false;
 			pressGraph = false;
 		}
+		
         //drawing the function if graph button is pressed
 		if(pressGraph)
 		{
 			findPoints(g);
 		}
-		
 	}
 	
     /*
@@ -236,8 +234,6 @@ public class GraphingCalculatorQuadratic extends JFrame implements ActionListene
 				repaint();
 			}
 			
-			
-			
 			//print the equation in y = ax^2 + bx + c
 			eqtn.setText("y = "+aNum+"x² + "+bNum+"x +"+cNum);
 
@@ -246,7 +242,6 @@ public class GraphingCalculatorQuadratic extends JFrame implements ActionListene
 			{
 				repaint();
 			}
-			
 		}
 		
         //clear screen if user clicks clear
@@ -264,25 +259,18 @@ public class GraphingCalculatorQuadratic extends JFrame implements ActionListene
         //transport to main menu if user chooses menu
 		else if(e.getSource() == menu)
 		{
-			new MainMenu();
+			new MainMenu("Main Menu");
 			dispose();
 		}
-		
-		
-		
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }
 	
 	
+	
+	
+	
+	
+
 	
 	
 	

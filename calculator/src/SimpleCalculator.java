@@ -67,7 +67,6 @@ public class SimpleCalculator extends JFrame implements ActionListener{
 	Pre: String n must be passed. String n represents the name of the window "Graphing Calculator"
 	Post: Creates container and buttons
 	*/
-
 	public SimpleCalculator(String n) {
 		super(n);
 		
@@ -199,11 +198,10 @@ public class SimpleCalculator extends JFrame implements ActionListener{
 	}
 	
 	/*
-	Calculations() is used to 
-	Pre: the String equation must not be empty
+	Calculations() is used to calculate the answer to a given equation
+	Pre: none
 	Post: outputs the answer to the inputted equation
 	*/
-
 	public void calculations() {
 		
 		String temp = ""; //used to separate equationArray into an array of numbers and an array of operators
@@ -330,7 +328,6 @@ public class SimpleCalculator extends JFrame implements ActionListener{
 	Pre: ActionEvent must be passed as a result of a button being pressed
 	Post: the String equation and the display is changed
 	*/
-
 	public void actionPerformed(ActionEvent e) {
 		//recognizing which button was clicked, displaying its value, and adding it to a string (which is used in calculations() to actually solve the equation)
 		if (e.getSource() == oneButton)
@@ -426,7 +423,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
 		}
 		else if (e.getSource() == menuButton)
 		{
-			new MainMenu();
+			new MainMenu("Main Menu");
 			dispose();
 			
 		} 

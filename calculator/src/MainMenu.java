@@ -1,36 +1,48 @@
+/*
+Due date: June 23 2021
+Name: Rana B. and Sophie Y.
+File description: Main menu for our calculator program. Includes buttons to transport you to other functions of the program. 
+*/
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.JTabbedPane;
-import javax.swing.WindowConstants;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 
 
 
 public class MainMenu extends JFrame implements ActionListener{
+
+		
+	public static void main(String[] args)
+	{
+		new MainMenu ("Main Menu");
+	}
+	//buttons setup for main menu 
 	JButton simpleCalc = new JButton("Simple Calculator");
-	JButton graphingCalc = new JButton("Graphing Calculator");
-	JButton weightConv = new JButton("Weight Converter");
-	JButton distanceConv = new JButton("Distance Converter");
-	JButton tempConv = new JButton("Temperature Converter");
+	JButton linGraphs = new JButton("Linear Graphing Calculator");
+	JButton quadGraphs = new JButton("Quadratic Graphing Calculator");
+	JButton theme1 = new JButton("Tropical");
+	JButton theme2 = new JButton("Dark Mode");
+	JButton theme3 = new JButton("Minimalistic");
 	Color pink = Color.decode("#f5c6e8");
 	Color teal = Color.decode("#446B87");
 	Color white = Color.decode("#FFFFFF");
 	Container c = getContentPane();
 		
-	
-	public MainMenu()
+	/*
+    MainMenu()
+    Function: Constructor--sets up the layout of the main menu and its frame. Sets up action listener on buttons
+    Pre: String n must be passed. String n represents the name of the window "Main Menu"
+    Post: Outputs the display of the calculator, allows buttons to be clickable 
+    */
+	public MainMenu(String n)
 	{
+		super(n);
 		c.setBackground(teal);
 		c.setLayout(null);
 		//background of buttons
@@ -38,57 +50,37 @@ public class MainMenu extends JFrame implements ActionListener{
 		simpleCalc.setOpaque(true);
 		c.add(simpleCalc);
 		
-		graphingCalc.setBackground(pink);
-		graphingCalc.setOpaque(true);
-		c.add(graphingCalc);
+		linGraphs.setBackground(pink);
+		linGraphs.setOpaque(true);
+		c.add(linGraphs);
 		
-		distanceConv.setBackground(pink);
-		distanceConv.setOpaque(true);
-		c.add(distanceConv);
+		quadGraphs.setBackground(pink);
+		quadGraphs.setOpaque(true);
+		c.add(quadGraphs);
 		
-		weightConv.setBackground(pink);
-		weightConv.setOpaque(true);
-		c.add(weightConv);
-		
-		tempConv.setBackground(pink);
-		tempConv.setOpaque(true);
-		c.add(tempConv);
-	
-		//size of buttons 
+		//setting size of buttons and implementing action listener
 		simpleCalc.setSize(260,70);
 		simpleCalc.setLocation(120,210);
-		
-	
-		graphingCalc.setSize(260,70);
-		graphingCalc.setLocation(120,270);
-		graphingCalc.addActionListener(this);
-		
-		distanceConv.setSize(260,70);
-		distanceConv.setLocation(120,350);
-		
-		weightConv.setSize(260,70);
-		weightConv.setLocation(120,410);
-		
-		tempConv.setSize(260,70);
-		tempConv.setLocation(120,470);
-		
-		
-		
-		//listen for click on  buttons
 		simpleCalc.addActionListener(this);
+	
+		linGraphs.setSize(260,70);
+		linGraphs.setLocation(120,270);
+		linGraphs.addActionListener(this);
 		
-		setVisible(true);
+		quadGraphs.setSize(260,70);
+		quadGraphs.setLocation(120,350);
+		quadGraphs.addActionListener(this);
+
+		//setting up the frame 
 		setSize(510,690);
 		repaint();
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 
-		
 
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == simpleCalc)
 		{
@@ -97,9 +89,16 @@ public class MainMenu extends JFrame implements ActionListener{
 			one.setVisible(true);
 			dispose();
 		}
-		else if (e.getSource() == graphingCalc)
+		else if (e.getSource() == linGraphs)
 		{
-			GraphingCalculator two = new GraphingCalculator("Graphing Calculator");
+			GraphingCalculatorLinear two = new GraphingCalculatorLinear("Linear Graphing Calculator");
+			two.setSize(510,690);
+			two.setVisible(true);
+			dispose();
+		}
+		else if (e.getSource() == quadGraphs)
+		{
+			GraphingCalculatorQuadratic two = new GraphingCalculatorQuadratic("Graphing Calculator");
 			two.setSize(510,690);
 			two.setVisible(true);
 			dispose();
