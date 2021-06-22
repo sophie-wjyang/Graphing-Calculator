@@ -1,3 +1,4 @@
+
 /*
 Due date: June 23 2021
 Name: Rana B. and Sophie Y.
@@ -11,7 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.Graphics;  
+
+
+
 
 public class MainMenu extends JFrame implements ActionListener{
 
@@ -21,16 +25,32 @@ public class MainMenu extends JFrame implements ActionListener{
 		new MainMenu ("Main Menu");
 	}
 	
-	//buttons setup for main menu 
+	//calculation buttons 
 	JButton simpleCalc = new JButton("Simple Calculator");
 	JButton linGraphs = new JButton("Linear Graphing Calculator");
 	JButton quadGraphs = new JButton("Quadratic Graphing Calculator");
-	JButton theme1 = new JButton("Tropical");
-	JButton theme2 = new JButton("Dark Mode");
-	JButton theme3 = new JButton("Minimalistic");
-	Color pink = Color.decode("#f5c6e8");
-	Color teal = Color.decode("#446B87");
+	
+	//background colour buttons
+	JButton periwinkle = new JButton("Periwinkle");
+	JButton babyBlue = new JButton("Baby Blue");
+	JButton pastelGreen = new JButton("Pastel Green");
+	
+	//theme buttons
+	JButton starryNight = new JButton("Starry Night");
+	JButton fireworks = new JButton("Fireworks");
+	JButton jellyfish = new JButton("Jellyfish");
+	
+	//background colours 
+	Color periwinkleColour = Color.decode("#CCCCFF");
+	Color babyBlueColour = Color.decode("#C0DFF7");
+	Color pastelGreenColour = Color.decode("#A2E4B8");
+	
+	//default colours
 	Color white = Color.decode("#FFFFFF");
+	Color defaultGrey = Color.decode("#D3D3D3");
+	
+	boolean starryNightPressed = false;
+	
 	Container c = getContentPane();
 		
 	/*
@@ -42,40 +62,70 @@ public class MainMenu extends JFrame implements ActionListener{
 	public MainMenu(String n)
 	{
 		super(n);
-		c.setBackground(teal);
+		c.setBackground(defaultGrey);
 		c.setLayout(null);
 		
 		//background of buttons
-		simpleCalc.setBackground(pink);
-		simpleCalc.setOpaque(true);
 		c.add(simpleCalc);
-		
-		linGraphs.setBackground(pink);
-		linGraphs.setOpaque(true);
 		c.add(linGraphs);
-		
-		quadGraphs.setBackground(pink);
-		quadGraphs.setOpaque(true);
 		c.add(quadGraphs);
+		c.add(periwinkle);
+		c.add(babyBlue);
+		c.add(pastelGreen);
+		c.add(starryNight);
+		c.add(fireworks);
+		c.add(jellyfish);
 		
-		//setting size of buttons and implementing action listener
-		simpleCalc.setSize(260,70);
-		simpleCalc.setLocation(120,210);
+		
+		//graph buttons: setting size of buttons and implementing action listener
+		simpleCalc.setSize(340,70);
+		simpleCalc.setLocation(90,110);
 		simpleCalc.addActionListener(this);
 	
-		linGraphs.setSize(260,70);
-		linGraphs.setLocation(120,270);
+		linGraphs.setSize(340,70);
+		linGraphs.setLocation(90,190);
 		linGraphs.addActionListener(this);
 		
-		quadGraphs.setSize(260,70);
-		quadGraphs.setLocation(120,330);
+		quadGraphs.setSize(340,70);
+		quadGraphs.setLocation(90,270);
 		quadGraphs.addActionListener(this);
+		
+		//colour palette buttons
+		periwinkle.setSize(130,50);
+		periwinkle.setLocation(90,440);
+		periwinkle.addActionListener(this);
+	
+		babyBlue.setSize(130,50);
+		babyBlue.setLocation(90,495);
+		babyBlue.addActionListener(this);
+		
+		pastelGreen.setSize(130,50);
+		pastelGreen.setLocation(90,550);
+		pastelGreen.addActionListener(this);
+		
+		//colour palette buttons
+		starryNight.setSize(130,50);
+		starryNight.setLocation(300,440);
+		starryNight.addActionListener(this);
+	
+		fireworks.setSize(130,50);
+		fireworks.setLocation(300,495);
+		fireworks.addActionListener(this);
+		
+		jellyfish.setSize(130,50);
+		jellyfish.setLocation(300,550);
+		jellyfish.addActionListener(this);
+		
+		
 
 		//setting up the frame 
 		setSize(510,690);
 		repaint();
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		
 	}
 
 	/*
@@ -105,6 +155,36 @@ public class MainMenu extends JFrame implements ActionListener{
 			two.setVisible(true);
 			dispose();
 		}
+		else if (e.getSource() == periwinkle)
+		{
+			c.setBackground(periwinkleColour);
+			repaint();
+		}
+		else if (e.getSource() == babyBlue)
+		{
+			c.setBackground(babyBlueColour);
+			repaint();
+		}
+		else if (e.getSource() == pastelGreen)
+		{
+			c.setBackground(pastelGreenColour);
+			repaint();
+		}
+		else if (e.getSource() == starryNight)
+		{
+			Test background = new Test();
+			background.setVisible(true);
+		}
+		else if (e.getSource() == babyBlue)
+		{
+			c.setBackground(babyBlueColour);
+			repaint();
+		}
+		else if (e.getSource() == pastelGreen)
+		{
+			c.setBackground(pastelGreenColour);
+			repaint();
+		}
 	}
 	
 	/*
@@ -114,13 +194,33 @@ public class MainMenu extends JFrame implements ActionListener{
     */
 	public void paint(Graphics g)
 	{
+		
 		super.paint(g);
+		
+		
+		//welcome text
 		g.setColor(white);
 		g.setFont(new Font("Courier", Font.BOLD, 20));
 		g.drawString("Welcome to Sophie and Rana's ", 90, 80);
-		g.drawString("calculator", 190, 100);
-		g.drawString("Take your pick!", 160, 190);
+		g.drawString("calculator! Take your pick:", 90, 100);
+		
+		//colour palettes
+		g.drawString("Colour ", 90, 420);
+		g.drawString("palettes:", 90, 440);
+		
+		//themes
+		g.drawString("Themes: ", 320, 420);
+		
+		Image img = Toolkit.getDefaultToolkit().getImage(  
+		MainMenu.class.getResource("starbackground.jpeg"));  
+		g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);  
+		
+//		if(starryNightPressed == true) {
+//			
+//		}
+		
 	}
+	
 }
 		
 
