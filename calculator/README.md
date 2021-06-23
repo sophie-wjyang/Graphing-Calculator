@@ -1,14 +1,27 @@
-## Getting Started
+NAME
+UnwieldyOddballInterface (name inspiration from replit.com 🥰)
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+AUTHORS
+Sophie Yang and Rana Balabel
 
-## Folder Structure
+DESCRIPTION
+UnwieldyOddballInterface is a multi-functional calculator that can solve simple equations and graph functions (linear and quadratic). 
 
-The workspace contains two folders by default, where:
+Main menu:
+Calls on the calculator and graphing calculator classes
+Has the ability to change the background colour and theme based on user preferences
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Calculator:
+Can carry out simple calculations involving the four operations (+,-,*,/)
+Adheres to the rules of BEDMAS
+Accepts negative input (displayed as an underscore “_” on the interface) 
+Accepts decimal input
+Can print error messages (an equation that starts with an operator, an equation that contains multiple consecutive operators, dividing by zero, etc.)
 
-## Dependency Management
-
-The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-pack/blob/master/release-notes/v0.9.0.md#work-with-jar-files-directly).
+Graphing calculator:
+Linear functions: in the form of y = mx + b; asks user for input of the slope and y-intercept
+Quadratic functions: in the form of y = ax2 + bx + c; asks user for input of the a, b, and c values
+X-axis ranges from -30 to +30; y-axis ranges from -35 to +35
+Each box represents an interval of 5
+Can handle bad input 
+Prints out the function in an animation

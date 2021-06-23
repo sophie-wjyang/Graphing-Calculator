@@ -95,8 +95,11 @@ public class GraphingCalculatorQuadratic extends JFrame implements ActionListene
 
         //Set up frame
 		setSize(510,690);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setResizable(false); 
+		repaint();
 		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
     /*

@@ -80,8 +80,11 @@ public class GraphingCalculatorLinear extends JFrame implements ActionListener{
         c.add(menu);
 		
 		setSize(510,690);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setResizable(false); 
+		repaint();
 		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public void LinearGraph(Graphics g) {
@@ -215,7 +218,7 @@ public class GraphingCalculatorLinear extends JFrame implements ActionListener{
 			}
 			
 			//print the equation formatting
-			if(yInt>0)
+			if(yInt>=0)
 			{
 				eqtn.setText("y = "+ySlope+"x + "+yInt);
 			}

@@ -6,6 +6,11 @@ File description: a simple calculator that can solve equations using the four op
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 
 public class SimpleCalculator extends JFrame implements ActionListener{
@@ -93,6 +98,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(oneButton);
         oneButton.addActionListener(this);
         this.add(panel1);
+		oneButton.setBackground(white);
         oneButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         oneButton.setSize(80,80);
         oneButton.setLocation(50,140);
@@ -100,6 +106,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(twoButton);
         twoButton.addActionListener(this);
         this.add(panel2);
+		twoButton.setBackground(white);
         twoButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         twoButton.setSize(80,80);
         twoButton.setLocation(160,140);
@@ -107,6 +114,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(threeButton);
         threeButton.addActionListener(this);
         this.add(panel3);
+		threeButton.setBackground(white);
         threeButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         threeButton.setSize(80,80);
         threeButton.setLocation(270,140);
@@ -114,6 +122,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(addButton);
         addButton.addActionListener(this);
         this.add(panelAdd);
+		addButton.setBackground(white);
         addButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         addButton.setSize(80,80);
         addButton.setLocation(380,140);
@@ -121,6 +130,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(fourButton);
         fourButton.addActionListener(this);
         this.add(panel4);
+		fourButton.setBackground(white);
         fourButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         fourButton.setSize(80,80);
         fourButton.setLocation(50,250);
@@ -128,6 +138,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(fiveButton);
         fiveButton.addActionListener(this);
         this.add(panel5);
+		fiveButton.setBackground(white);
         fiveButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         fiveButton.setSize(80,80);
         fiveButton.setLocation(160,250);
@@ -135,6 +146,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(sixButton);
         sixButton.addActionListener(this);
         this.add(panel6);
+		sixButton.setBackground(white);
         sixButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         sixButton.setSize(80,80);
         sixButton.setLocation(270,250);
@@ -142,6 +154,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(subtractButton);
         subtractButton.addActionListener(this);
         this.add(panelSubtract);
+		subtractButton.setBackground(white);
         subtractButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         subtractButton.setSize(80,80);
         subtractButton.setLocation(380,250);
@@ -149,6 +162,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(sevenButton);
         sevenButton.addActionListener(this);
         this.add(panel7);
+		sevenButton.setBackground(white);
         sevenButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         sevenButton.setSize(80,80);
         sevenButton.setLocation(50,360);
@@ -156,6 +170,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(eightButton);
         eightButton.addActionListener(this);
         this.add(panel8);
+		eightButton.setBackground(white);
         eightButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         eightButton.setSize(80,80);
         eightButton.setLocation(160,360);
@@ -163,6 +178,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(nineButton);
         nineButton.addActionListener(this);
         this.add(panel9);
+		nineButton.setBackground(white);
         nineButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         nineButton.setSize(80,80);
         nineButton.setLocation(270,360);
@@ -170,6 +186,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(multiplyButton);
         multiplyButton.addActionListener(this);
         this.add(panelMultiply);
+		multiple.setBackground(white);
         multiplyButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         multiplyButton.setSize(80,80);
         multiplyButton.setLocation(380,360);
@@ -177,6 +194,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(zeroButton);
         zeroButton.addActionListener(this);
         this.add(panel0);
+		zeroButton.setBackground(white);
         zeroButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         zeroButton.setSize(80,80);
         zeroButton.setLocation(50,470);
@@ -184,6 +202,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(decimalButton);
         decimalButton.addActionListener(this);
         this.add(panelDecimal);
+		decimalButton.setBackground(white);
         decimalButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         decimalButton.setSize(80,80);
         decimalButton.setLocation(160,470);
@@ -191,6 +210,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(negativeButton);
         negativeButton.addActionListener(this);
         this.add(panelNegative);
+		negativeButton.setBackground(white);
         negativeButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         negativeButton.setSize(80,80);
         negativeButton.setLocation(270,470);
@@ -198,6 +218,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(divideButton);
         divideButton.addActionListener(this);
         this.add(panelDivide);
+		divideButton.setBackground(white);
         divideButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         divideButton.setSize(80,80);
         divideButton.setLocation(380,470);
@@ -205,6 +226,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(clearButton);
         clearButton.addActionListener(this);
         this.add(panelClear);
+		clearButton.setBackground(white);
         clearButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         clearButton.setSize(190,50);
         clearButton.setLocation(270,580);
@@ -212,6 +234,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(calculateButton);
         calculateButton.addActionListener(this);
         this.add(panelCalculate);
+		calculateButton.setBackground(white);
         calculateButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         calculateButton.setSize(190,50);
         calculateButton.setLocation(50,580);
@@ -349,103 +372,139 @@ public class SimpleCalculator extends JFrame implements ActionListener{
 	Post: the String equation and the display is changed
 	*/
 	public void actionPerformed(ActionEvent e) {
+		//NOTE: IN THIS PROGRAM, THE UNDERSCORE "_" REPRESENTS A NEGATIVE SIGN (e.g.: _5 means negative five)
+		
 		//recognizing which button was clicked, displaying its value, and adding it to a string (which is used in calculations() to actually solve the equation)
 		if (e.getSource() == oneButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "1";
 			output.setText(equation);
 		}
 		else if (e.getSource() == twoButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "2";
 			output.setText(equation);
 		}
 		else if (e.getSource() == threeButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "3";
 			output.setText(equation);
 		}
 		else if (e.getSource() == fourButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "4";
 			output.setText(equation);
 		}
 		else if (e.getSource() == fiveButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "5";
 			output.setText(equation);
 		}
 		else if (e.getSource() == sixButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "6";
 			output.setText(equation);
 		}
 		else if (e.getSource() == sevenButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "7";
 			output.setText(equation);
 		}
 		else if (e.getSource() == eightButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "8";
 			output.setText(equation);
 		}
 		else if (e.getSource() == nineButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "9";
 			output.setText(equation);
 		}
 		else if (e.getSource() == zeroButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "0";
 			output.setText(equation);
 		}
 		else if (e.getSource() == addButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "+";
 			output.setText(equation);
 		}
 		else if (e.getSource() == subtractButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "-";
 			output.setText(equation);
 		}
 		else if (e.getSource() == multiplyButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "*";
 			output.setText(equation);
 		}
 		else if (e.getSource() == divideButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "/";
 			output.setText(equation);
 		}
 		else if (e.getSource() == decimalButton)
 		{
+			playSound("buttonSound.wav");
 			equation += ".";
 			output.setText(equation);
 		}
 		else if (e.getSource() == negativeButton)
 		{
+			playSound("buttonSound.wav");
 			equation += "_"; //note: underscore instead of negative sign
 			output.setText(equation);
 		}
 		else if (e.getSource() == clearButton)
 		{
+			playSound("buttonSound.wav");
 			equation = "";
 			output.setText("");
 		}
 		else if (e.getSource() == calculateButton)
 		{
+			playSound("buttonSound.wav");
 			calculations();
 			output.setText(String.valueOf(result)); 
 			equation = "";
 		}
-		else if (e.getSource() == menuButton)
+		else if (e.getSource() == menuButton) //goes back to main menu
 		{
 			new MainMenu("Main Menu");
 			dispose();
-			
 		} 
 	}
+
+	public void playSound(String soundName)
+	{
+	  try 
+	  {
+	   AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile( ));
+	   Clip clip = AudioSystem.getClip( );
+	   clip.open(audioInputStream);
+	   clip.start( );
+	  }
+	  catch(Exception ex)
+	  {
+		System.out.println("Error with playing sound.");
+		ex.printStackTrace( );
+	  }
+	}
+   
 }
