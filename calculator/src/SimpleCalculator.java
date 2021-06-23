@@ -7,6 +7,7 @@ File description: a simple calculator that can solve equations using the four op
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -56,9 +57,9 @@ public class SimpleCalculator extends JFrame implements ActionListener{
     JButton divideButton = new JButton("/");
     JButton calculateButton = new JButton("=");
     JButton clearButton = new JButton("Clear");
-	JButton menuButton = new JButton("Menu");
     
-    //colours
+    //main menu button
+    JButton menuButton = new JButton("Menu");
     Color red = Color.decode("#f09d97");
     Color white = Color.decode("#FFFFFF");
     
@@ -81,7 +82,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         //main menu button
         c.add(menuButton);
         menuButton.setBackground(red);
-        menuButton.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+        menuButton.setFont(new Font("Times New Roman", Font.PLAIN, 15));
         menuButton.setSize(70,40);
         menuButton.setLocation(390,10);
         menuButton.addActionListener(this);
@@ -497,6 +498,11 @@ public class SimpleCalculator extends JFrame implements ActionListener{
 		} 
 	}
 
+	/*
+	playSound() controls the sound files' starting and end points. It is responsible for playing the music.
+	Pre: soundName string value holds the name of the file 
+	Post: Plays/stop sound
+	*/
 	public void playSound(String soundName)
 	{
 	  try 
