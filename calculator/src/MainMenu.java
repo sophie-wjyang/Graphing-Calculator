@@ -140,7 +140,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		//setting up the frame 
 		setSize(510,690);
 		repaint();
-		setLocationRelativeTo(null);
+		//setLocationRelativeTo(null);
 		setResizable(false); 
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -165,18 +165,14 @@ public class MainMenu extends JFrame implements ActionListener{
 		{
 			musicControl = false;
 			playSound();
-			GraphingCalculatorLinear two = new GraphingCalculatorLinear("Linear Graphing Calculator");
-			two.setSize(510,690);
-			two.setVisible(true);
+			new GraphingCalculatorLinear("Linear Graphing Calculator");
 			dispose();
 		}
 		else if (e.getSource() == quadGraphs)
 		{
 			musicControl = false;
 			playSound();
-			GraphingCalculatorQuadratic two = new GraphingCalculatorQuadratic("Graphing Calculator");
-			two.setSize(510,690);
-			two.setVisible(true);
+			new GraphingCalculatorQuadratic("Graphing Calculator");
 			dispose();
 		}
 		else if (e.getSource() == periwinkle)
@@ -246,9 +242,7 @@ public class MainMenu extends JFrame implements ActionListener{
 				
 				clip.open(audioInputStream);
 				clip.start( );
-				clip.loop(Clip.LOOP_CONTINUOUSLY); 
-				
-				    
+				clip.loop(Clip.LOOP_CONTINUOUSLY); 	    
 			}
 			catch(Exception ex)
 			{
@@ -256,7 +250,6 @@ public class MainMenu extends JFrame implements ActionListener{
 				ex.printStackTrace( );
 			}
 		}
-		
 		else 
 		{
 			try 
