@@ -7,7 +7,6 @@ File description: a simple calculator that can solve equations using the four op
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -57,9 +56,9 @@ public class SimpleCalculator extends JFrame implements ActionListener{
     JButton divideButton = new JButton("/");
     JButton calculateButton = new JButton("=");
     JButton clearButton = new JButton("Clear");
+	JButton menuButton = new JButton("Menu");
     
-    //main menu button
-    JButton menuButton = new JButton("Menu");
+    //colours
     Color red = Color.decode("#f09d97");
     Color white = Color.decode("#FFFFFF");
     

@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-
 import javax.swing.JFrame;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -68,7 +67,6 @@ public class MainMenu extends JFrame implements ActionListener{
     Pre: String n must be passed. String n represents the name of the window "Main Menu"
     Post: Outputs the display of the calculator; adds actionlistener 
     */
-	
 	public MainMenu(String n)
 	{
 		super(n);
@@ -137,10 +135,12 @@ public class MainMenu extends JFrame implements ActionListener{
 		blue.addActionListener(this);
 
 		playSound();
+
 		//setting up the frame 
 		setSize(510,690);
 		repaint();
-		//setLocationRelativeTo(null);
+
+		setLocationRelativeTo(null);
 		setResizable(false); 
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -154,7 +154,7 @@ public class MainMenu extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == simpleCalc)
 		{
-			musicControl = false;
+			musicControl = false; //stops music once user wants to go to a calculator
 			playSound();
 			SimpleCalculator one = new SimpleCalculator("Simple Calculator");
 			one.setSize(510,690);
@@ -222,23 +222,28 @@ public class MainMenu extends JFrame implements ActionListener{
 		g.drawString("Welcome to Sophie and Rana's ", 90, 80);
 		g.drawString("calculator! Take your pick:", 90, 100);
 		
-		//colour palettes
+		//pastel prompt
 		g.drawString("Pastel ", 90, 420);
 		g.drawString("palette:", 90, 440);
 		
-		//themes
+		//summer prompt
 		g.drawString("Summer: ", 320, 420);
 		g.drawString("palette:", 320, 440);
 	}	
 
+	/*
+	playSound() controls the sound files' starting and end points. It is responsible for playing the music.
+	Pre: None
+	Post: Plays/stop music
+	*/
 	public void playSound()
 	 {
 		if(musicControl)
 		{
 			try 
 			{
-				 audioInputStream = AudioSystem.getAudioInputStream(new File("MenuMusic.wav").getAbsoluteFile( ));
-				 clip = AudioSystem.getClip( );
+				audioInputStream = AudioSystem.getAudioInputStream(new File("MenuMusic.wav").getAbsoluteFile( ));
+				clip = AudioSystem.getClip( );
 				
 				clip.open(audioInputStream);
 				clip.start( );
@@ -256,7 +261,6 @@ public class MainMenu extends JFrame implements ActionListener{
 			{
 				if (clip.isRunning())
                     clip.stop();   // Stop the player if it is still running
-
 			}
 			catch(Exception ex)
 			{
@@ -265,8 +269,6 @@ public class MainMenu extends JFrame implements ActionListener{
 			}
 		}
 	 }
-
-
 }
 		
 

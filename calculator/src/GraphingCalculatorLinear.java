@@ -87,6 +87,11 @@ public class GraphingCalculatorLinear extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	/*
+    LinearGraph() finds all the x and y coordinates needed to print the shape of the graph. Paint calls on this method to paint the line on the screen
+    Pre: Graphics object g must be passed from overriden paint method
+    Post: prints out a series of circles, that join together to display the given linear function
+    */
 	public void LinearGraph(Graphics g) {
 		
 	double y;														//y coordinate of the equation
@@ -117,7 +122,6 @@ public class GraphingCalculatorLinear extends JFrame implements ActionListener{
     Pre: Graphics object g must be passed from overriden paint method
     Post: Prints out error messages, grid, and graph 
     */
-
 	public void paint(Graphics g)
 	{
 		super.paint(g);
@@ -182,7 +186,6 @@ public class GraphingCalculatorLinear extends JFrame implements ActionListener{
     Pre: none
     Post: instantiates an object of the GraphingCalculatorLinear class
     */
-
 	public static void main(String[] args)
 	{
 		new GraphingCalculatorLinear("Graphing Calculator");
@@ -193,7 +196,6 @@ public class GraphingCalculatorLinear extends JFrame implements ActionListener{
 	Pre: ActionEvent must be passed as a result of a button being pressed
 	Post: Checks for valid input before calling the findPoints() function. Prints out equation onto screen. Clears screen when button is pressed. Can transport to main menu if button is pressed 
 	*/
-
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == graph)
