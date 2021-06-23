@@ -186,7 +186,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         c.add(multiplyButton);
         multiplyButton.addActionListener(this);
         this.add(panelMultiply);
-		multiple.setBackground(white);
+		multiplyButton.setBackground(white);
         multiplyButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         multiplyButton.setSize(80,80);
         multiplyButton.setLocation(380,360);
@@ -238,6 +238,13 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         calculateButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         calculateButton.setSize(190,50);
         calculateButton.setLocation(50,580);
+
+		setSize(510,690);
+		setLocationRelativeTo(null);
+		setResizable(false); 
+		repaint();
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	/*
