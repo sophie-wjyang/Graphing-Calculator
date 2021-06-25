@@ -1,4 +1,3 @@
-
 /*
 Due date: June 23, 2021
 Authors: Rana B. and Sophie Y.
