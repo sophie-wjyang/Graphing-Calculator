@@ -82,7 +82,7 @@ public class SimpleCalculator extends JFrame implements ActionListener{
         //main menu button
         c.add(menuButton);
         menuButton.setBackground(red);
-        menuButton.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+        menuButton.setFont(new Font("Times New Roman", Font.PLAIN, 15));
         menuButton.setSize(70,40);
         menuButton.setLocation(390,10);
         menuButton.addActionListener(this);
@@ -498,6 +498,11 @@ public class SimpleCalculator extends JFrame implements ActionListener{
 		} 
 	}
 
+	/*
+	playSound() controls the sound files' starting and end points. It is responsible for playing the music.
+	Pre: soundName string value holds the name of the file 
+	Post: Plays/stop sound
+	*/
 	public void playSound(String soundName)
 	{
 	  try 

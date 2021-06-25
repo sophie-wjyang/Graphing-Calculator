@@ -212,8 +212,7 @@ public class GraphingCalculatorQuadratic extends JFrame implements ActionListene
     /*
 	actionPerformed() is used to define what happens when the user clicks on a given button
 	Pre: ActionEvent must be passed as a result of a button being pressed
-	Post: Checks for valid input before calling the findPoints() function. Prints out equation onto screen. 
-          Clears screen when button is pressed. Can transport to main menu if button is pressed 
+	Post: Checks for valid input before calling the findPoints() function. Prints out equation onto screen. Clears screen when button is pressed. Can transport to main menu if button is pressed 
 	*/
 	public void actionPerformed(ActionEvent e) {
 		//convert text input to doubles if graph button is pressed 
